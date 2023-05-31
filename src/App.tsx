@@ -1,28 +1,19 @@
-import { FC, useMemo } from 'react'
-import { Provider, useSelector } from 'react-redux'
+import { FC } from 'react'
+import { Provider } from 'react-redux'
 import { Router } from 'react-router-dom'
-import { createTheme, ThemeProvider } from '@mui/material'
+import { ConfigProvider } from 'antd'
 import { PersistGate } from 'redux-persist/integration/react'
 
-import { genThemeWithPaletteMode } from './constants/mui-theme'
 import { createBrowserHistory } from 'history'
-import { getThemeMode } from './store/selectors'
-import { AppLayout } from './layout'
+import { theme } from './constants/theme'
 import { store, persistor } from './store'
+import { AppLayout } from './layout'
 
 const AppTheme: FC = () => {
-  const paletteMode = useSelector(getThemeMode)
-
-  // Update the theme only if the mode changes
-  const theme = useMemo(
-    () => createTheme(genThemeWithPaletteMode(paletteMode)),
-    [paletteMode]
-  )
-
   return (
-    <ThemeProvider theme={theme}>
+    <ConfigProvider theme={theme}>
       <AppLayout/>
-    </ThemeProvider>
+    </ConfigProvider>
   )
 }
 
