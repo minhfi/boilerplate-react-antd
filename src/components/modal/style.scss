@@ -1,0 +1,23 @@
+.modal {
+    background: rgba(36 37 45 / 40%);
+    backdrop-filter: blur(16px);
+
+    &-icon {
+        &__close {
+            position: absolute;
+            right: -8px;
+            top: -8px;
+            z-index: 2;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            box-shadow: 0px 8px 16px rgb(37 38 46 / 10%);
+            border-radius: 32px;
+            // background-color:  var($White);
+
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+    }
+}

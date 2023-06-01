@@ -1,64 +1,45 @@
 import { FC, useCallback, useState, HTMLInputTypeAttribute } from 'react'
-import { Box, IconButton, InputAdornment, SxProps, TextFieldProps, Typography, useTheme } from '@mui/material'
+import { Input as InputAntd } from 'antd'
+// import { IconVisibility, IconVisibilityOff } from 'src/assets/icons'
+import { Colors } from 'src/constants/theme'
 
-import { TextField, TextInput } from './styled'
-import { IconVisibility, IconVisibilityOff } from 'src/assets/icons'
-
-export interface InputBaseProps {
+export interface InputProps {
   type?: HTMLInputTypeAttribute
   name?: string
   label?: string
   required?: boolean
   error?: string
   mb?: number
-  sx?: SxProps
 }
 
-export type InputProps = InputBaseProps & Omit<TextFieldProps, 'error'>
-
 export const Input: FC<InputProps> = ({ label, error, mb, required, ...props }) => {
-  const theme = useTheme()
   const [showPassword, setShowPassword] = useState<boolean>(false)
+  const type = props.type === 'password' && !showPassword ? 'password' : 'text'
+
   const toggleShowPassword = useCallback(() => setShowPassword(!showPassword), [showPassword])
 
-  const type = props.type === 'password' && !showPassword ? 'password' : 'text'
-  const InputProps = props.type === 'password'
-    ? {
-        endAdornment: (
-          <InputAdornment position="end">
-            <IconButton
-              aria-label="Toggle password visibility"
-              onClick={toggleShowPassword}
-              onMouseDown={toggleShowPassword}
-            >
-              {showPassword ? <IconVisibility/> : <IconVisibilityOff/>}
-            </IconButton>
-          </InputAdornment>
-        )
-      }
-    : props.InputProps
+  console.log({ toggleShowPassword })
 
   return (
-    <TextInput mb={mb} sx={props.sx}>
+    <div className="input" style={{ marginBottom: mb }}>
       {label && (
-        <Typography variant="body1" sx={{ marginBottom: '8px' }}>
-          {label} {required && <Typography component="span" variant="body2" color={theme.colors['--color-negative-500']}>*</Typography>}
-        </Typography>
+        <div className="body1" style={{ marginBottom: '8px' }}>
+          {label} {required && <span className="body2" style={{ color: Colors.negative }}>*</span>}
+        </div>
       )}
 
-      <TextField
+      <InputAntd
         {...props}
         type={type}
-        error={!!error}
-        InputProps={InputProps}
+        status={error ? 'error' : ''}
       />
 
       {error && (
-        <Box mt={1}>
-          <Typography variant="body2" color={theme.colors['--color-negative-500']}>{error}</Typography>
-        </Box>
+        <div style={{ marginTop: '8px' }}>
+          <div className="body-2" style={{ color: Colors.negative }}>{error}</div>
+        </div>
       )}
-    </TextInput>
+    </div>
   )
 }
 

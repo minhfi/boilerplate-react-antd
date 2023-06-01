@@ -1,12 +1,12 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react'
-import { Box, Divider, Typography, useTheme } from '@mui/material'
 import { useDispatch } from 'react-redux'
-import { setLayoutLoading, setLayoutNotify } from 'src/store/actions'
+import { setLayoutLoading } from 'src/store/actions'
 import { useValidation } from 'src/hooks/useValidation'
 import { Button } from 'src/components/button'
 import { Input } from 'src/components/input'
 import { ENotify } from 'src/constants/enum'
 import { formDataSchema } from './schema'
+import { notify } from 'src/utils/notify.util'
 
 interface IFormData {
   name: string
@@ -14,7 +14,6 @@ interface IFormData {
 }
 
 const DesignSystem: FC = () => {
-  const theme = useTheme()
   const dispatch = useDispatch()
 
   const { errors, validate } = useValidation<IFormData>()
@@ -35,10 +34,9 @@ const DesignSystem: FC = () => {
 
   const handleNotify = () => {
     dispatch(
-      setLayoutNotify({
-        open: true,
+      notify({
         type: ENotify.SUCCESS,
-        content: 'asdasdasd'
+        message: 'asdasdasd'
       })
     )
   }
@@ -58,8 +56,9 @@ const DesignSystem: FC = () => {
   }, [])
 
   return (
-    <Box p={3}>
-      <Box mb={3}>
+    <div style={{ padding: '24px' }}>
+      123123
+      {/* <Box mb={3}>
         <Typography variant="h5">Typography</Typography>
         <Box display="flex" alignItems="flex-end" gap={2} mt={2}>
           <Typography variant="h1">h1</Typography>
@@ -121,8 +120,8 @@ const DesignSystem: FC = () => {
             onChange={handleChangeInput}
           />
         </Box>
-      </Box>
-    </Box>
+      </Box> */}
+    </div>
   )
 }
 

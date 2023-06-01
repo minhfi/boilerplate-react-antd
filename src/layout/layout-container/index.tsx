@@ -5,7 +5,7 @@ import { getIsAuthenticated, getLayoutIsAside, getLayoutIsHeader, getNavigateTo 
 import { setLayoutAside, setLayoutHeader } from 'src/store/actions'
 import { AUTH_GET_PROFILE } from 'src/store/types'
 import Header from './header'
-import { STContainer, STChildren, STContent } from './styled'
+import './style.scss'
 
 export const LayoutContainer: FC = (props) => {
   const history = useHistory()
@@ -35,14 +35,14 @@ export const LayoutContainer: FC = (props) => {
   }, [isAuthenticated])
 
   return (
-    <STContainer>
+    <section className="layout-container">
       {/* {isAside && <Aside/>} */}
-      <STContent>
+      <div className="layout-content">
         {isHeader && <Header/>}
-        <STChildren>
+        <div className="layout-content__child">
           {props.children}
-        </STChildren>
-      </STContent>
-    </STContainer>
+        </div>
+      </div>
+    </section>
   )
 }

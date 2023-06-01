@@ -1,5 +1,8 @@
-@import 'reset';
-@import 'fonts';
-@import 'layout';
-@import './color';
-@import './typography';
+@import './_color.scss';
+@import './_typography.scss';
+@import './_fonts.scss';
+@import './_layout.scss';
+
+// @import 'tailwindcss/base';
+// @import 'tailwindcss/components';
+// @import 'tailwindcss/utilities';

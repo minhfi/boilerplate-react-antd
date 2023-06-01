@@ -13,10 +13,10 @@ import {
   AUTH_LOGOUT,
   AUTH_LOGOUT_SUCCESS,
   LAYOUT_SET_NAVIGATE,
-  LAYOUT_SET_NOTIFY,
   AUTH_GET_PROFILE,
   AUTH_SET_PROFILE
 } from '../types'
+import { notify } from 'src/utils/notify.util'
 
 /**
  * Get user credentials with jwt
@@ -56,13 +56,9 @@ function * login(action: { type: typeof AUTH_LOGIN; payload: {email: string; pas
       value: '/home'
     })
   } catch (error) {
-    yield put({
-      type: LAYOUT_SET_NOTIFY,
-      value: {
-        open: true,
-        type: ENotify.ERROR,
-        content: convertErrorAPI(error as AxiosError<IErrorResponse>)
-      }
+    notify({
+      type: ENotify.ERROR,
+      message: convertErrorAPI(error as AxiosError<IErrorResponse>)
     })
   }
 }
@@ -77,13 +73,9 @@ function * logout(action: { type: typeof AUTH_LOGOUT }) {
     yield put({ type: AUTH_LOGOUT_SUCCESS })
     yield AuthenticationUtil.clear()
   } catch (error) {
-    yield put({
-      type: LAYOUT_SET_NOTIFY,
-      value: {
-        open: true,
-        type: ENotify.ERROR,
-        content: convertErrorAPI(error as AxiosError<IErrorResponse>)
-      }
+    notify({
+      type: ENotify.ERROR,
+      message: convertErrorAPI(error as AxiosError<IErrorResponse>)
     })
   }
 }

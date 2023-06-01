@@ -1,12 +1,12 @@
 import { ChangeEvent, FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Box } from '@mui/material'
 import { useValidation } from 'src/hooks/useValidation'
 import { setLayoutLoading } from 'src/store/actions'
 import { Button } from 'src/components/button'
 import { Input } from 'src/components/input'
 import { formDataSchema } from './schema'
 import { AUTH_LOGIN } from 'src/store/types'
+import './style.scss'
 
 interface IFormData {
   email: string
@@ -52,8 +52,8 @@ const Login:FC = () => {
   }
 
   return (
-    <Box height="100%" display="flex" alignItems="center" justifyContent="center">
-      <Box width={400} display="flex" flexDirection="column">
+    <div className="login">
+      <div className="login-form">
         <Input
           required
           label="Email"
@@ -78,8 +78,8 @@ const Login:FC = () => {
         <Button onClick={handleSubmit} sx={{ marginTop: 4 }}>
           Login
         </Button>
-      </Box>
-    </Box>
+      </div>
+    </div>
   )
 }
 

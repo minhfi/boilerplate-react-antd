@@ -1,11 +1,10 @@
-import { Box } from '@mui/material'
 import { FC } from 'react'
 
 const Home:FC = () => {
   return (
-    <Box>
+    <div>
       Home Page
-    </Box>
+    </div>
   )
 }
 

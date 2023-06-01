@@ -1,0 +1,12 @@
+.layout {
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    // background-color: var($White);
+
+    &-main {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+    }
+}

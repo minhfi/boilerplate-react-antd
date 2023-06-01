@@ -1,9 +1,8 @@
 import { FC } from 'react'
 import { useDispatch } from 'react-redux'
-import { Typography } from '@mui/material'
 import { Button } from 'src/components/button'
 import { AUTH_LOGOUT } from 'src/store/types'
-import { STHeader } from './styled'
+import './style.scss'
 
 const Header:FC = () => {
   const dispatch = useDispatch()
@@ -11,10 +10,10 @@ const Header:FC = () => {
   const handleLogout = () => dispatch({ type: AUTH_LOGOUT })
 
   return (
-    <STHeader>
-      <Typography variant="h5">Page title</Typography>
+    <section className="header">
+      <div className="heading-5">Page title</div>
       <Button order="secondary" onClick={handleLogout}>Logout</Button>
-    </STHeader>
+    </section>
   )
 }
 

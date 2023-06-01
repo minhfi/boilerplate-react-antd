@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import 'src/utils/axios.config'
 import App from './App'
-import './styles'
+import 'src/styles'
 
 ReactDOM.render(
   <React.StrictMode>

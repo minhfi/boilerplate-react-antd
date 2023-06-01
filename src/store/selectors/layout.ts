@@ -26,8 +26,3 @@ export const getNavigateTo: TSelectorResult<ILayoutState['navigateTo']> = create
   (state: TAppState) => state.layout,
   (layout: ILayoutState) => layout.navigateTo
 )
-
-export const getLayoutNotify: TSelectorResult<ILayoutState['notify']> = createSelector(
-  (state: TAppState) => state.layout,
-  (layout: ILayoutState) => layout.notify
-)

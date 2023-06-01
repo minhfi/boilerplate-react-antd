@@ -1,48 +1,33 @@
-import { ChangeEvent, FC, useMemo } from 'react'
-import { ButtonProps } from '@mui/material'
-import { ButtonPrimary, ButtonSecondary } from './styled'
+import { FC } from 'react'
+import { Button as ButtonAntd } from 'antd'
 
-export interface IButtonProps extends ButtonProps {
-  order?: 'primary' | 'secondary'
+export interface IButtonProps {
+  type?: 'primary' | 'link'
   width?: number
   height?: number
   background?: string
-  colorText?: string
-  handleChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  color?: string
+  onClick?: () => void
 }
 
-export const Button: FC<IButtonProps & ButtonProps<'span', { component?: 'span' }>> = ({ width, height, order, colorText, ...props }) => {
-  const VIEW = useMemo(() => {
-    switch (order) {
-      case 'secondary':
-        return (
-          <ButtonSecondary
-            width={width}
-            height={height}
-            colorText={colorText}
-            {...props}
-          >
-            {props.children}
-          </ButtonSecondary>
-        )
-      default:
-        return (
-          <ButtonPrimary
-            width={width}
-            height={height}
-            colorText={colorText}
-            {...props}
-          >
-            {props.children}
-          </ButtonPrimary>
-        )
-    }
-  }, [width, height, order, props])
-
-  return VIEW
+export const Button: FC<IButtonProps> = ({ width, height, type, color, background, onClick, ...props }) => {
+  return (
+    <ButtonAntd
+      type={type}
+      onClick={onClick}
+      style={{
+        width: width,
+        height: height,
+        color: color,
+        background: background
+      }}
+    >
+      {props.children}
+    </ButtonAntd>
+  )
 }
 
 Button.defaultProps = {
-  order: 'primary',
+  type: 'primary',
   height: 40
 }
