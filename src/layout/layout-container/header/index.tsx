@@ -12,7 +12,7 @@ const Header:FC = () => {
   return (
     <section className="header">
       <div className="heading-5">Page title</div>
-      <Button order="secondary" onClick={handleLogout}>Logout</Button>
+      <Button type="link" onClick={handleLogout}>Logout</Button>
     </section>
   )
 }

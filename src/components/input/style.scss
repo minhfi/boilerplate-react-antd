@@ -1,4 +1,12 @@
 .input {
     display: flex;
     flex-direction: column;
+
+    input {
+        padding: 8px;
+    }
+
+    .ant-input-group-addon {
+        cursor: pointer;
+    }
 }

@@ -75,7 +75,7 @@ const Login:FC = () => {
           error={errors.password}
         />
 
-        <Button onClick={handleSubmit} sx={{ marginTop: 4 }}>
+        <Button onClick={handleSubmit} style={{ marginTop: '16px' }}>
           Login
         </Button>
       </div>

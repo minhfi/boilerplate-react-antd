@@ -7,6 +7,8 @@ import { Input } from 'src/components/input'
 import { ENotify } from 'src/constants/enum'
 import { formDataSchema } from './schema'
 import { notify } from 'src/utils/notify.util'
+import { Divider } from 'antd'
+import { Colors } from 'src/constants/theme'
 
 interface IFormData {
   name: string
@@ -33,12 +35,10 @@ const DesignSystem: FC = () => {
   }
 
   const handleNotify = () => {
-    dispatch(
-      notify({
-        type: ENotify.SUCCESS,
-        message: 'asdasdasd'
-      })
-    )
+    notify({
+      type: ENotify.SUCCESS,
+      message: 'Test success'
+    })
   }
 
   const handleSubmit = async () => {
@@ -57,51 +57,52 @@ const DesignSystem: FC = () => {
 
   return (
     <div style={{ padding: '24px' }}>
-      123123
-      {/* <Box mb={3}>
-        <Typography variant="h5">Typography</Typography>
-        <Box display="flex" alignItems="flex-end" gap={2} mt={2}>
-          <Typography variant="h1">h1</Typography>
-          <Typography variant="h2">h2</Typography>
-          <Typography variant="h3">h3</Typography>
-          <Typography variant="h4">h4</Typography>
-          <Typography variant="h5">h5</Typography>
-          <Typography variant="h6">h6</Typography>
-          <Typography variant="subtitle1">subtitle1</Typography>
-          <Typography variant="subtitle2">subtitle2</Typography>
-          <Typography variant="body1">body1</Typography>
-          <Typography variant="body2">body2</Typography>
-        </Box>
-      </Box>
+      <div style={{ marginTop: '24px' }}>
+        <div className="heading-5">Typography</div>
+        <div style={{ display: 'flex', alignItems: 'flex-end', marginTop: '16px', gap: '16px' }}>
+          <div className="heading-1">heading1</div>
+          <div className="heading-2">heading2</div>
+          <div className="heading-3">heading3</div>
+          <div className="heading-4">heading4</div>
+          <div className="heading-5">heading5</div>
+          <div className="heading-6">heading6</div>
+          <div className="subtitle-1">subtitle1</div>
+          <div className="subtitle-2">subtitle2</div>
+          <div className="body-1">body1</div>
+          <div className="body-2">body2</div>
+        </div>
+      </div>
 
       <Divider/>
 
-      <Box mt={3} mb={3}>
-        <Typography variant="h5">Button</Typography>
-        <Box display="flex" alignItems="center" gap={3} mb={2} mt={2}>
-          <Button>Button primary</Button>
-          <Button order="secondary">Button secondary</Button>
+      <div style={{ margin: '24px 0' }}>
+        <div className="heading-5">Button</div>
+        <div style={{ display: 'flex', alignItems: 'flex-end', marginTop: '16px', gap: '16px' }}>
+          <Button onClick={handleNotify}>Button primary</Button>
+          <Button type="link">Button secondary</Button>
           <Button disabled>Button disabled</Button>
           <Button
-            width={300}
-            background={theme.colors['--color-negative-500']}
-            colorText={theme.colors['--color-white']}
+            style={{
+              width: '300px',
+              background: Colors.negative,
+              color: Colors.white
+            }}
           >
             Button other
           </Button>
-        </Box>
+        </div>
 
-        <Button fullWidth>Button Full width</Button>
-      </Box>
+        <Button style={{ width: '100%', marginTop: '16px' }}>Button Full width</Button>
+      </div>
 
       <Divider/>
 
-      <Box mt={3} mb={3}>
-        <Box display="flex" gap={3} alignItems="center">
-          <Typography variant="h5">Input</Typography>
-          <Button onClick={handleSubmit}>Test input field</Button>
-        </Box>
-        <Box mt={2} display="flex" gap={3}>
+      <div style={{ margin: '24px 0' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+          <div className="heading-5">Input</div>
+          <Button type="link" onClick={handleSubmit}>Test input field</Button>
+        </div>
+        <div style={{ marginTop: '16px', display: 'flex', gap: '24px' }}>
           <Input
             required
             label="Name"
@@ -119,8 +120,8 @@ const DesignSystem: FC = () => {
             value={formData.phone}
             onChange={handleChangeInput}
           />
-        </Box>
-      </Box> */}
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,11 @@
+@import 'src/styles/_color.scss';
+
+.button {
+  padding: 8px 16px;
+  color: $Neutral700;
+  height: 40px;
+
+  &:hover {
+    color: unset !important;
+  }
+}

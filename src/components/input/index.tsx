@@ -1,24 +1,32 @@
-import { FC, useCallback, useState, HTMLInputTypeAttribute } from 'react'
-import { Input as InputAntd } from 'antd'
-// import { IconVisibility, IconVisibilityOff } from 'src/assets/icons'
+import { FC, useCallback, useState, HTMLInputTypeAttribute, useMemo } from 'react'
+import { Input as InputBasic } from 'antd'
+import { InputProps } from 'antd/lib/input'
+import { IconVisibility, IconVisibilityOff } from 'src/assets/icons'
 import { Colors } from 'src/constants/theme'
+import './style.scss'
 
-export interface InputProps {
+export interface IInputProps extends InputProps {
   type?: HTMLInputTypeAttribute
   name?: string
   label?: string
   required?: boolean
   error?: string
-  mb?: number
+  mb?: string
 }
 
-export const Input: FC<InputProps> = ({ label, error, mb, required, ...props }) => {
+export const Input: FC<IInputProps> = ({ label, error, mb, required, ...props }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const type = props.type === 'password' && !showPassword ? 'password' : 'text'
 
   const toggleShowPassword = useCallback(() => setShowPassword(!showPassword), [showPassword])
 
-  console.log({ toggleShowPassword })
+  const ADDONAFTER = useMemo(() => {
+    if (props.type === 'password') {
+      return showPassword ? <IconVisibility onClick={toggleShowPassword}/> : <IconVisibilityOff onClick={toggleShowPassword}/>
+    }
+
+    return ''
+  }, [props.type, showPassword, toggleShowPassword])
 
   return (
     <div className="input" style={{ marginBottom: mb }}>
@@ -28,10 +36,11 @@ export const Input: FC<InputProps> = ({ label, error, mb, required, ...props }) 
         </div>
       )}
 
-      <InputAntd
+      <InputBasic
         {...props}
         type={type}
         status={error ? 'error' : ''}
+        addonAfter={ADDONAFTER}
       />
 
       {error && (
@@ -45,5 +54,5 @@ export const Input: FC<InputProps> = ({ label, error, mb, required, ...props }) 
 
 Input.defaultProps = {
   type: 'text',
-  mb: 2
+  mb: '16px'
 }

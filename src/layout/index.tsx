@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
 import { getModal } from 'src/store/selectors'
 import { Loading } from 'src/components/loading'
 import { Modal } from 'src/components/modal'
@@ -17,6 +18,11 @@ export const AppLayout: FC = () => {
 
       {appModal.open && <Modal/>}
       <Loading/>
+
+      <ToastContainer
+        autoClose={5000}
+        hideProgressBar
+      />
     </section>
   )
 }

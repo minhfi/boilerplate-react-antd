@@ -1,33 +1,25 @@
 import { FC } from 'react'
-import { Button as ButtonAntd } from 'antd'
+import { Button as ButtonBasic } from 'antd'
+import { NativeButtonProps } from 'antd/lib/button/button'
+import './style.scss'
 
-export interface IButtonProps {
+export interface IButtonProps extends NativeButtonProps {
   type?: 'primary' | 'link'
-  width?: number
-  height?: number
-  background?: string
-  color?: string
   onClick?: () => void
 }
 
-export const Button: FC<IButtonProps> = ({ width, height, type, color, background, onClick, ...props }) => {
+export const Button: FC<IButtonProps> = (props) => {
   return (
-    <ButtonAntd
-      type={type}
-      onClick={onClick}
-      style={{
-        width: width,
-        height: height,
-        color: color,
-        background: background
-      }}
+    <ButtonBasic
+      {...props}
+      type={props.type}
+      className="button body-2"
     >
       {props.children}
-    </ButtonAntd>
+    </ButtonBasic>
   )
 }
 
 Button.defaultProps = {
-  type: 'primary',
-  height: 40
+  type: 'primary'
 }

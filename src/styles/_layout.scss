@@ -1,7 +1,7 @@
 body {
     margin: 0;
-    // color: var($Neutral400);
-    // background-color: var($White);
-  
-    font-family: 'Inter'
+    color: $Neutral400;
+    background-color: $White;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
   }
