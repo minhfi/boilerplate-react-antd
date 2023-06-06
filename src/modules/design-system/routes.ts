@@ -6,6 +6,6 @@ export const DesignSystemRoutes: IRouterOption[] = [
     path: '/design-system',
     exact: true,
     component: DesignSystem,
-    isRequired: true
+    isRequired: false
   }
 ]

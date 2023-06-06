@@ -1,0 +1,12 @@
+@import 'src/styles/_color.scss';
+
+.aside {
+    &-header {
+        height: 80px;
+        width: 100%;
+        color: $White;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

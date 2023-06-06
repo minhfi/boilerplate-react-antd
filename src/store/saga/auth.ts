@@ -72,6 +72,10 @@ function * logout(action: { type: typeof AUTH_LOGOUT }) {
     // yield AuthApi.logout()
     yield put({ type: AUTH_LOGOUT_SUCCESS })
     yield AuthenticationUtil.clear()
+    yield put({
+      type: LAYOUT_SET_NAVIGATE,
+      value: '/'
+    })
   } catch (error) {
     notify({
       type: ENotify.ERROR,

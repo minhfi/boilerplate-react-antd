@@ -1,10 +1,12 @@
 import { FC, useEffect, useLayoutEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
+import { Layout } from 'antd'
 import { getIsAuthenticated, getLayoutIsAside, getLayoutIsHeader, getNavigateTo } from 'src/store/selectors'
 import { setLayoutAside, setLayoutHeader } from 'src/store/actions'
 import { AUTH_GET_PROFILE } from 'src/store/types'
 import Header from './header'
+import Aside from './aside'
 import './style.scss'
 
 export const LayoutContainer: FC = (props) => {
@@ -12,7 +14,7 @@ export const LayoutContainer: FC = (props) => {
   const dispatch = useDispatch()
   const navigateTo = useSelector(getNavigateTo)
   const isHeader = useSelector(getLayoutIsHeader)
-  // const isAside = useSelector(getLayoutIsAside)
+  const isAside = useSelector(getLayoutIsAside)
   const isAuthenticated = useSelector(getIsAuthenticated)
 
   // navigate route in redux
@@ -35,14 +37,14 @@ export const LayoutContainer: FC = (props) => {
   }, [isAuthenticated])
 
   return (
-    <section className="layout-container">
-      {/* {isAside && <Aside/>} */}
+    <Layout className="layout-container">
+      {isAside && <Aside/>}
       <div className="layout-content">
         {isHeader && <Header/>}
-        <div className="layout-content__child">
+        <Layout.Content className="layout-content__child">
           {props.children}
-        </div>
+        </Layout.Content>
       </div>
-    </section>
+    </Layout>
   )
 }
