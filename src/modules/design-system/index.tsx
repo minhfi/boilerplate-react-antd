@@ -84,7 +84,7 @@ const DesignSystem: FC = () => {
           <Button
             style={{
               width: '300px',
-              background: Colors.negative,
+              background: Colors.red,
               color: Colors.white
             }}
           >

@@ -8,15 +8,11 @@ import {
 import { Layout, Menu } from 'antd'
 import './style.scss'
 
-const Aside:FC = () => {
+const Aside: FC = () => {
   const history = useHistory()
   const [collapsed, setCollapsed] = useState(false)
 
-  const handleRedirect = (e:any) => {
-    if (e.key) {
-      history.push(e.key)
-    }
-  }
+  const handleRedirect = (e: any) => e.key && history.push(e.key)
 
   const ITEMS = useMemo(() => {
     return [
@@ -26,9 +22,9 @@ const Aside:FC = () => {
         label: 'Home'
       },
       {
-        key: '/nav2',
+        key: '/design-system',
         icon: <DesktopOutlined/>,
-        label: 'Nav 2'
+        label: 'Design system'
       },
       {
         key: '3',
@@ -51,11 +47,21 @@ const Aside:FC = () => {
   }, [])
 
   return (
-    <Layout.Sider width={300} className="aside" collapsible collapsed={collapsed} onCollapse={(value:boolean) => setCollapsed(value)}>
-      <div className="aside-header">
-        TEMPLATE
-      </div>
-      <Menu theme="dark" defaultSelectedKeys={[history.location.pathname]} mode="inline" items={ITEMS} onClick={handleRedirect}/>
+    <Layout.Sider
+      width={300}
+      className="aside"
+      collapsible
+      collapsed={collapsed}
+      onCollapse={(value: boolean) => setCollapsed(value)}
+    >
+      <div className="aside-header">TEMPLATE</div>
+      <Menu
+        theme="dark"
+        defaultSelectedKeys={[history.location.pathname]}
+        mode="inline"
+        items={ITEMS}
+        onClick={handleRedirect}
+      />
     </Layout.Sider>
   )
 }

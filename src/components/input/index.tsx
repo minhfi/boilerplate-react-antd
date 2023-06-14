@@ -32,7 +32,7 @@ export const Input: FC<IInputProps> = ({ label, error, mb, required, ...props })
     <div className="input" style={{ marginBottom: mb }}>
       {label && (
         <div className="body1" style={{ marginBottom: '8px' }}>
-          {label} {required && <span className="body2" style={{ color: Colors.negative }}>*</span>}
+          {label} {required && <span className="body2" style={{ color: Colors.red }}>*</span>}
         </div>
       )}
 
@@ -45,7 +45,7 @@ export const Input: FC<IInputProps> = ({ label, error, mb, required, ...props })
 
       {error && (
         <div style={{ marginTop: '8px' }}>
-          <div className="body-2" style={{ color: Colors.negative }}>{error}</div>
+          <div className="body-2" style={{ color: Colors.red }}>{error}</div>
         </div>
       )}
     </div>

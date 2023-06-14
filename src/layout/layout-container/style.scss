@@ -4,12 +4,14 @@
     flex: 1 1 auto;
     display: flex;
     height: 100vh;
+    overflow: hidden;
 }
 
 .layout-content {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     &__child {
         height: 100%;

@@ -11,9 +11,9 @@ export interface IButtonProps extends NativeButtonProps {
 export const Button: FC<IButtonProps> = (props) => {
   return (
     <ButtonBasic
-      {...props}
       type={props.type}
       className="button body-2"
+      {...props}
     >
       {props.children}
     </ButtonBasic>
