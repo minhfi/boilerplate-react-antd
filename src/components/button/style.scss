@@ -1,18 +1,16 @@
-@import 'src/styles/_color.scss';
-
 .button {
   padding: 8px 16px;
-  color: $White;
+  color: var(--white);
   height: 40px;
   box-shadow: unset;
 
   &:disabled {
-    background: $Gray300;
-    color: $Gray600;
+    background: var(--gray-300);
+    color: var(--gray-600);
     border: unset;
   }
 }
 
 .ant-btn-link {
-  color: $Primary;
+  color: var(--primary);
 }

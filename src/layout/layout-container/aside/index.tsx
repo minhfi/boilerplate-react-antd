@@ -33,12 +33,10 @@ const Aside: FC = () => {
         children: [
           {
             key: '/123',
-            icon: <PieChartOutlined/>,
             label: 'nav 1'
           },
           {
             key: '/456',
-            icon: <DesktopOutlined/>,
             label: 'nav 2'
           }
         ]

@@ -1,5 +1,3 @@
-@import 'src/styles/_color.scss';
-
 .layout-container {
     flex: 1 1 auto;
     display: flex;
@@ -16,6 +14,6 @@
     &__child {
         height: 100%;
         overflow: auto;
-        background-color: $White
+        background-color: var(--white)
     }
 }

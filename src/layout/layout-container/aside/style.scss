@@ -1,10 +1,13 @@
-@import 'src/styles/_color.scss';
-
 .aside {
+    li.ant-menu-item {
+        border-radius: 4px;
+        height: 48px;
+    }
+
     &-header {
         height: 80px;
         width: 100%;
-        color: $White;
+        color: var(--white);
         display: flex;
         align-items: center;
         justify-content: center;
