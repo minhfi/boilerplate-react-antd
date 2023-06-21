@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import { useHistory } from 'react-router'
 import {
   DesktopOutlined,
@@ -11,6 +11,7 @@ import './style.scss'
 const Aside: FC = () => {
   const history = useHistory()
   const [collapsed, setCollapsed] = useState(false)
+  const [selectedKeys, setSelectedKeys] = useState(history.location.pathname)
 
   const handleRedirect = (e: any) => e.key && history.push(e.key)
 
@@ -44,6 +45,18 @@ const Aside: FC = () => {
     ]
   }, [])
 
+  useEffect(() => {
+    if (history.location.pathname) {
+      setSelectedKeys(history.location.pathname)
+    }
+
+    history.listen((location) => {
+      if (history.location.pathname) {
+        setSelectedKeys(history.location.pathname)
+      }
+    })
+  }, [history])
+
   return (
     <Layout.Sider
       width={300}
@@ -56,6 +69,7 @@ const Aside: FC = () => {
       <Menu
         theme="dark"
         defaultSelectedKeys={[history.location.pathname]}
+        selectedKeys={[selectedKeys]}
         mode="inline"
         items={ITEMS}
         onClick={handleRedirect}
