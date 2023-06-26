@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setLayoutLoading } from 'src/store/actions'
 import { useValidation } from 'src/hooks/useValidation'
 import { Button } from 'src/components/button'
@@ -9,6 +9,8 @@ import { formDataSchema } from './schema'
 import { notify } from 'src/utils/notify.util'
 import { Divider } from 'antd'
 import { Colors } from 'src/constants/theme'
+import { AUTH_GET_PROFILE } from 'src/store/types'
+import { getIsAuthenticated } from 'src/store/selectors'
 
 interface IFormData {
   name: string
@@ -17,6 +19,7 @@ interface IFormData {
 
 const DesignSystem: FC = () => {
   const dispatch = useDispatch()
+  const isAuthenticated = useSelector(getIsAuthenticated)
 
   const { errors, validate } = useValidation<IFormData>()
 
@@ -53,6 +56,13 @@ const DesignSystem: FC = () => {
 
   useEffect(() => {
     dispatch(setLayoutLoading(false))
+  }, [])
+
+  // load profile
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch({ type: AUTH_GET_PROFILE })
+    }
   }, [])
 
   return (
