@@ -6,6 +6,7 @@ import { Loading } from 'src/components/loading'
 import { Modal } from 'src/components/modal'
 
 import { RouterView } from './router-view'
+import { Drawer } from 'src/components/drawer'
 
 export const AppLayout: FC = () => {
   const appModal = useSelector(getModal)
@@ -18,6 +19,7 @@ export const AppLayout: FC = () => {
 
       {appModal.open && <Modal/>}
       <Loading/>
+      <Drawer/>
 
       <ToastContainer
         autoClose={5000}

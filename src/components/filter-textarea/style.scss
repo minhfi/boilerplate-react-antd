@@ -1,0 +1,49 @@
+.filter-textarea {
+    position: relative;
+
+    &:hover > div {
+        border-color: var(--primary);
+        transition: all .5s;
+    }
+
+    &__select {
+        cursor: pointer;
+        height: 36px;
+        padding: 0 11px;
+        border: 1px solid var(--gray-350);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 6px;
+
+        >div:nth-of-type(1) {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        &.ant-dropdown-open {
+            border-color: var(--primary);
+            box-shadow: -1px 1px 9px -1px var(--gray-350);
+        }
+    }
+
+    &__dropdown {
+        position: absolute;
+        z-index: 10;
+        right: 0;
+        top: 8px;
+        width: 280px;
+        background: var(--white);
+        padding: 16px;
+        box-shadow: 0 3px 6px #00000029;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.down-icon svg {
+    width: 13px;
+    height: 13px;
+}

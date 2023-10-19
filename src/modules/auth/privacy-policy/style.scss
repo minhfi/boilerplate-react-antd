@@ -1,0 +1,43 @@
+.privacy-policy {
+    background-color: #fff;
+    padding-top: 24px;
+    .container {
+        padding: 0 40px;
+    }
+    &--content {
+        text-align: justify;
+
+        .heading-4 {
+            text-transform: uppercase;
+        }
+    }
+    &--footer {
+        background-color: rgb(228, 228, 228);
+        padding: 16px 0;
+    }
+    &--sub {
+        line-height: 1.6;
+
+        .heading-6 {
+            text-transform: uppercase;
+        }
+
+        p{
+            margin: 16px 0;
+        }
+
+        ul {
+            li {
+                display: flex;
+                align-items: center;
+                &::before {
+                    content: counter(linum, disc);
+                    font-size: 36px;
+                    line-height: 1;
+                    margin-right: 10px;
+                    color: #545454;
+                }
+            }
+        }
+    }
+}

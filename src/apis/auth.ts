@@ -1,17 +1,28 @@
-import axios, { AxiosResponse } from 'axios'
-import { ICredential, IDataResponse } from 'src/interfaces'
+import axios from 'axios'
+import { TAxiosResponse } from 'src/interfaces'
+import { ICredential, IProfile } from 'src/interfaces/models/auth.model'
 
 export class AuthApi {
-  static _prefix = '/api/v1'
-
-  static login(payload: {
+  static signIn(payload: {
     email: string
     password: string
-  }): Promise<AxiosResponse<IDataResponse<ICredential>>> {
-    return axios.post(`${this._prefix}/login`, payload)
+  }): TAxiosResponse<ICredential> {
+    return axios.post('/login', payload)
   }
 
-  static logout(): Promise<AxiosResponse<void>> {
-    return axios.delete(`${this._prefix}/logout`)
+  static signUp(payload: any): TAxiosResponse<void> {
+    return axios.post('/affiliates/signup', payload)
+  }
+
+  static logout(): TAxiosResponse<void> {
+    return axios.delete('/logout')
+  }
+
+  static profile(): TAxiosResponse<{ profile: IProfile }> {
+    return axios.get('/v1/profile')
+  }
+
+  static editProfile(payload: any): TAxiosResponse<void> {
+    return axios.put('/v1/profile', payload)
   }
 }

@@ -1,0 +1,20 @@
+.modal-confirm {
+    color: var(--gray-900);
+    
+    &__body {
+        padding: 32px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__action {
+        padding: 16px 24px;
+        background: var(--white);
+        border-top: 1px solid var(--gray-400);
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 8px;
+    }
+}

@@ -1,0 +1,8 @@
+.tag {
+    margin-inline-end: 0 !important;
+}
+
+.tag.override-color {
+    background-color: var(--gray-100);
+        color: var(--gray-900)
+}

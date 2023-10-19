@@ -1,10 +1,9 @@
-import { AxiosError } from 'axios'
-import { AuthApi, ProfileApi } from 'src/apis'
+import { AuthApi } from 'src/apis'
 import { takeLatest, put } from 'redux-saga/effects'
 import { AuthenticationUtil } from 'src/utils/authentication.util'
-import { convertErrorAPI } from 'src/utils/helpers.utils'
+import { getApiErrorMessage } from 'src/utils/axios.utils'
 import { StorageUtil } from 'src/utils/storage.util'
-import { IErrorResponse } from 'src/interfaces'
+import { notify } from 'src/utils/notify.util'
 import { ENotify } from './../../constants/enum'
 
 import {
@@ -14,9 +13,9 @@ import {
   AUTH_LOGOUT_SUCCESS,
   LAYOUT_SET_NAVIGATE,
   AUTH_GET_PROFILE,
-  AUTH_SET_PROFILE
+  AUTH_SET_PROFILE,
+  LAYOUT_SET_LOADING
 } from '../types'
-import { notify } from 'src/utils/notify.util'
 
 /**
  * Get user credentials with jwt
@@ -24,14 +23,14 @@ import { notify } from 'src/utils/notify.util'
 function * getProfile(action: { type: typeof AUTH_GET_PROFILE }) {
   try {
     // workaround for promise with generator function
-    const { data: profile } = yield ProfileApi.detail()
+    const { data } = yield AuthApi.profile()
 
     yield put({
       type: AUTH_SET_PROFILE,
-      value: profile
+      value: data.profile
     })
   } catch (error) {
-    yield put({ type: AUTH_LOGOUT_SUCCESS })
+    // yield put({ type: AUTH_LOGOUT_SUCCESS })
   }
 }
 
@@ -40,25 +39,38 @@ function * getProfile(action: { type: typeof AUTH_GET_PROFILE }) {
  * @param {object} action
  * @return {Redirect} Go home
  */
-function * login(action: { type: typeof AUTH_LOGIN; payload: {email: string; password: string} }) {
+function * login(action: {
+  type: typeof AUTH_LOGIN
+  payload: { email: string; password: string }
+}) {
   try {
+    yield put({
+      type: LAYOUT_SET_LOADING,
+      value: true
+    })
+
     // workaround for promise with generator function
-    const { data } = yield AuthApi.login(action.payload)
-    StorageUtil.setItem('_tk', data.data?.accessToken)
+    const { data } = yield AuthApi.signIn(action.payload)
+    StorageUtil.setItem('_tk', data.credentials?.token)
 
     yield put({
       type: AUTH_SET_CREDENTIALS,
-      value: data.data
+      value: data.credentials
     })
 
     yield put({
       type: LAYOUT_SET_NAVIGATE,
-      value: '/home'
+      value: 'dashboard'
     })
   } catch (error) {
     notify({
       type: ENotify.ERROR,
-      message: convertErrorAPI(error as AxiosError<IErrorResponse>)
+      message: getApiErrorMessage(error)
+    })
+  } finally {
+    yield put({
+      type: LAYOUT_SET_LOADING,
+      value: false
     })
   }
 }
@@ -79,7 +91,7 @@ function * logout(action: { type: typeof AUTH_LOGOUT }) {
   } catch (error) {
     notify({
       type: ENotify.ERROR,
-      message: convertErrorAPI(error as AxiosError<IErrorResponse>)
+      message: getApiErrorMessage(error)
     })
   }
 }

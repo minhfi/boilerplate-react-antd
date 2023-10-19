@@ -1,0 +1,19 @@
+@import 'src/styles/_typography.scss';
+
+.drawer {
+    position: relative;
+    
+    .ant-drawer-header {
+        gap: 16px;
+    }
+
+    .ant-drawer-header-title {
+        gap: 8px;
+        height: 36px
+    }
+    
+    .ant-drawer-title {
+        @include typo(1.4rem, 600);
+        color: var(--gray-900)
+    }
+}

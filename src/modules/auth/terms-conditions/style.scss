@@ -1,0 +1,48 @@
+.terms-condition {
+    background-color: #fff;
+    padding-top: 24px;
+
+    .container {
+        padding: 0 40px;
+    }
+
+    &--content {
+        text-align: justify;
+    }
+
+    &--footer {
+        background-color: rgb(228, 228, 228);
+        padding: 16px 0;
+    }
+
+    &--link {
+        text-decoration: underline;
+        text-transform: uppercase;
+    }
+
+    &--sub {
+        line-height: 1.6;
+
+        .heading-6 {
+            text-transform: uppercase;
+        }
+
+        p{
+            margin: 16px 0;
+        }
+
+        ul {
+            padding-left: 0px;
+            li {
+                list-style: none;
+            }
+        }
+    }
+    &--box {
+        text-transform: uppercase;
+        text-decoration: underline;
+        a {
+            text-decoration: underline;
+        }
+    }
+}

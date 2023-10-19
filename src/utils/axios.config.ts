@@ -1,3 +1,2 @@
 import './axios.defaults'
-import './axios.interceptors'
-import './axios.adapters'
+import './axios.adapter.auth'

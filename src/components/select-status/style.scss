@@ -1,0 +1,74 @@
+@import 'src/styles/_typography.scss';
+
+.select-status {
+    display: flex;
+    flex-direction: column;
+
+    .ant-select-single {
+        width: 260px;
+    }
+
+    .ant-select-selector {
+        min-height: 36px !important;
+    }
+
+    .ant-select-selection-item {
+        display: flex;
+        align-items: center;
+        color: var(--gray-900);
+        @include font-size(1rem);
+    }
+
+    .ant-select-selection-placeholder {
+        display: flex;
+        align-items: center;
+        @include font-size(1rem);
+    }
+
+    .ant-select-arrow {
+        color: var(--black);
+    }
+
+    .ant-select-disabled {
+        .ant-select-selector {
+            background: var(--gray-200) !important;
+            color: unset !important;
+        }
+    }
+
+    &__label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        >div:nth-of-type(1) {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        &--status {
+            background: var(--gray-600);
+        }
+
+        &--draft {
+            background: var(--gray-900);
+        }
+
+        &--active {
+            background: var(--green);
+        }
+
+        &--pending {
+            background: var(--orange-300);
+        }
+
+        &--testing {
+            background: var(--orange-300);
+        }
+
+        &--inactive {
+            background: var(--red-500);
+        }
+    }
+}

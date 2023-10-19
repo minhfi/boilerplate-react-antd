@@ -1,0 +1,44 @@
+@import 'src/styles/_typography.scss';
+
+.date-picker {
+    display: flex;
+    flex-direction: column;
+
+    .ant-picker {
+        padding: 0;
+        width: 100%;
+    }
+
+    .ant-picker-input {
+        padding: 6px 8px;
+        border-radius: 4px;
+
+        input {
+            @include font-size(1rem);
+
+            &::placeholder {
+                @include font-size(1rem);
+            }
+        }
+    }
+
+    .ant-picker-clear {
+        right: 8px;
+    }
+
+    &__popup {
+        .ant-picker-date-panel {
+            button {
+                @include font-size(1rem);
+            }
+        }
+
+        .ant-picker-content {
+            @include font-size(1rem);
+        }
+
+        .ant-picker-footer {
+            @include font-size(1rem);
+        }
+    }
+}

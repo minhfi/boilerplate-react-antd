@@ -22,6 +22,16 @@ export const getLayoutIsLoading: TSelectorResult<ILayoutState['isLoading']> = cr
   (layout: ILayoutState) => layout.isLoading
 )
 
+export const getLayoutIsOpenMenu: TSelectorResult<ILayoutState['isOpenMenu']> = createSelector(
+  (state: TAppState) => state.layout,
+  (layout: ILayoutState) => layout.isOpenMenu
+)
+
+export const getLayoutDrawer: TSelectorResult<ILayoutState['drawer']> = createSelector(
+  (state: TAppState) => state.layout,
+  (layout: ILayoutState) => layout.drawer
+)
+
 export const getNavigateTo: TSelectorResult<ILayoutState['navigateTo']> = createSelector(
   (state: TAppState) => state.layout,
   (layout: ILayoutState) => layout.navigateTo

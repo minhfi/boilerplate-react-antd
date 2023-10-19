@@ -1,18 +1,17 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { AuthenticationUtil } from 'src/utils/authentication.util'
-import { AuthApi } from 'src/apis'
-import { store } from 'src/store'
-import { AUTH_LOGOUT_SUCCESS } from 'src/store/types'
+// import { store } from 'src/store'
+// import { AUTH_LOGOUT_SUCCESS } from 'src/store/types'
 
 /**
  * @typedef {import('axios').AxiosRequestConfig} AxiosRequestConfig
  * @typedef {import('axios').AxiosResponse} AxiosResponse
  */
 
-const clearCredentials = () => {
-  AuthenticationUtil.clear()
-  store.dispatch({ type: AUTH_LOGOUT_SUCCESS })
-}
+// const clearCredentials = () => {
+//   AuthenticationUtil.clear()
+//   store.dispatch({ type: AUTH_LOGOUT_SUCCESS })
+// }
 
 /**
  * @param {AxiosRequestConfig} config
@@ -32,19 +31,19 @@ const injectAuthorization = (config: AxiosRequestConfig) => {
  * @param {AxiosResponse} response
  */
 const cacheResponseToken = (response: AxiosResponse) => {
-  const { data } = (response as Awaited<ReturnType<typeof AuthApi.login>>).data || {}
+  const { data } = response.data || {}
 
-  if (data?.accessToken) {
-    AuthenticationUtil.setToken(data?.accessToken)
+  if (data?.credentials?.token) {
+    AuthenticationUtil.setToken(data?.credentials?.token)
   }
 
-  return response
+  return response.data
 }
 
 const handleErrorResponse = (error: AxiosError) => {
-  if (error.response && error.response.status === 403) {
-    clearCredentials()
-  }
+  // if (error.response && error.response.status === 403) {
+  //   clearCredentials()
+  // }
 
   throw error
 }

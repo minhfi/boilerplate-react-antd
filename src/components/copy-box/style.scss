@@ -1,0 +1,12 @@
+.copy-box {
+    &__text {
+        box-sizing: border-box;
+        padding: 0 0 0 12px;
+        border-radius: 4px;
+        background-color: var(--background);
+    }
+
+    &__note {
+        margin-top: 8px;
+    }
+}

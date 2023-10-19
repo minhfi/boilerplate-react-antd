@@ -1,0 +1,41 @@
+.tabs-manage {
+    display: flex;
+    gap: 16px;
+
+    &__tab {
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        svg {
+            cursor: pointer;
+        }
+
+        &--item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--white);
+            }
+        }
+
+        &--active {
+            background-color: var(--white);
+            color: var(--black);
+            font-weight: 500;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-width: 500px;
+    }
+}

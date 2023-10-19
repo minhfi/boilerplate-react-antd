@@ -2,8 +2,8 @@ import { IModalState, IModalAction, MODAL, RESET_MODAL } from '../types'
 
 const initState: IModalState = {
   open: false,
-  content: '',
-  action: () => {}
+  title: '',
+  content: ''
 }
 
 export const reducer = (state = initState, action: IModalAction) => {

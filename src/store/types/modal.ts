@@ -1,4 +1,4 @@
-import { ReactChild } from 'react'
+import { ReactElement } from 'react'
 
 /* layout actions */
 export const MODAL = 'MODAL'
@@ -9,8 +9,9 @@ export const RESET_MODAL = 'RESET_MODAL'
  */
 export interface IModalState {
   open?: boolean
-  content?: ReactChild
-  action?: () => void
+  title?: string
+  content?: ReactElement | string
+  width?: string | number
 }
 
 /**

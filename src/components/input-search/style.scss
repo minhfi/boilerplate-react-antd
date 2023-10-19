@@ -1,0 +1,33 @@
+@import 'src/styles/_typography.scss';
+
+.input-search {
+    padding: 6px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--gray-350);
+
+    &:hover {
+        border-color: var(--primary) !important;
+    }
+
+    input {
+        @include font-size(1rem);
+
+        &::placeholder {
+            @include font-size(1rem);
+        }
+    }
+
+    .ant-input-group-addon {
+        cursor: pointer;
+    }
+
+    .ant-input-disabled {
+        background-color: var(--gray-200);
+    }
+
+    svg {
+        path {
+            fill: var(--gray-350);
+        }
+    }
+}

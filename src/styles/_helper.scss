@@ -1,0 +1,40 @@
+.cursor-pointer {
+    cursor:pointer;
+}
+
+.cursor-help {
+    cursor:help;
+}
+
+.word-break {
+    word-break: break-word
+}
+
+.link {
+    color: var(--primary);
+    cursor: pointer;
+
+    &:hover {
+        color: var(--primary);
+        text-decoration: underline;
+    }
+}
+
+.text-url {
+    font-family: monaco, Consolas, "Lucida Console", monospace;
+    @include typo(0.925rem, 400);
+  }
+  
+.text-break {
+  word-break: break-word!important;
+  word-wrap: break-word!important;
+}
+  
+.text-break-all {
+  word-break: break-all;
+}
+  
+.note-color {
+  color: var(--gray-600)
+}
+

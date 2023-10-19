@@ -1,0 +1,26 @@
+.textarea {
+    display: flex;
+    flex-direction: column;
+
+    textarea {
+        padding: 6px 8px;
+        border-radius: 4px;
+        border: 1px solid var(--gray-350);
+
+        &::placeholder {
+            font-size: 1rem;
+        }
+    }
+
+    .ant-input-status-error {
+        border-color: var(--red) !important;
+    }
+    
+    .ant-input-group-addon {
+        cursor: pointer;
+    }
+
+    .ant-input-disabled {
+        background-color: var(--gray-200);
+    }
+}

@@ -1,7 +1,33 @@
-body {
-    margin: 0;
-    color: var(--black);
-    background-color: var(--white);
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
+@import 'src/styles/_mixin.scss';
+@import 'src/styles/_variables.scss';
+
+html {
+  font-size: 14px;
+
+  @include mediaQueryMax($screenXXLarge) {
+    font-size: 13px;
   }
+}
+
+body {
+  margin: 0;
+  color: var(--gray-900);
+  background-color: var(--background);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+
+  ::-webkit-scrollbar {
+    position: relative;
+    width: 0.25rem;
+    height: 0.25rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background: var(--gray-550);
+  }
+}
+
+.Toastify__toast-body {
+  font-family: 'Inter', sans-serif;
+}

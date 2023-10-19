@@ -1,0 +1,65 @@
+@import 'src/styles/_typography.scss';
+
+.select-block {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid var(--gray-400);
+    background-color: var(--white);
+
+    display: flex;
+    flex-direction: column;
+
+    &__search {
+       padding: 8px 16px; 
+       border-bottom: 1px solid var(--gray-400);
+
+       input {
+            border: unset;
+            padding: 0;
+            @include font-size(1rem);
+
+            &:hover {
+                border: unset;
+                padding: 0;
+            }
+
+            &:focus {
+                border: unset;
+                padding: 0;
+                box-shadow: unset;
+                border-radius: unset;
+            }
+
+            &::placeholder {
+                @include font-size(1rem);
+            }
+       }
+    }
+
+    &__content {
+        padding: 16px;
+        height: 60vh;
+        overflow: auto;
+
+        &--item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            height: 40px;
+            padding: 0 8px;
+            cursor: pointer;
+            border-radius: 4px;
+
+            &:hover {
+                background-color: var(--gray-50)
+            }
+
+            >div:nth-of-type(2) {
+                background-color: var(--gray-200);
+                padding: 4px;
+                border-radius: 4px;
+            }
+        }
+    }
+}

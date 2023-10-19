@@ -1,0 +1,75 @@
+.select-multi {
+    display: flex;
+    flex-direction: column;
+
+    &__option {
+        >div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            img {
+                object-fit: cover;
+            }
+
+            div {
+                display: block;
+                max-width: 100%;
+                white-space: nowrap;
+                overflow: hidden !important;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
+    .ant-select:hover .ant-select-selector,
+    .ant-select-open .ant-select-selector {
+        border-color: var(--primary) !important;
+    }
+
+    .ant-select-selection-item-content {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        div {
+            display: block;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .ant-select-selector {
+        min-height: 36px !important;
+    }
+
+    .ant-select-selection-item {
+        display: flex;
+        align-items: center;
+        color: var(--gray-900);
+    }
+
+    .ant-select-selection-placeholder {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+    }
+
+    .ant-select-arrow {
+        color: var(--black);
+        
+    }
+
+    .ant-select-status-error > div.ant-select-selector {
+        border-color: var(--red) !important
+    }
+    
+    .ant-select-disabled {
+        .ant-select-selector {
+            background: unset !important;
+            color: unset !important;
+        }
+    }
+}

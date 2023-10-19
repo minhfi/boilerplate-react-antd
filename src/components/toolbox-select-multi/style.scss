@@ -1,0 +1,20 @@
+.toolbox-select {
+    height: 70px;
+    background-color: var(--gray-900);
+    color: var(--white);
+    padding: 0 8px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+    &__count {
+        height: 24px;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-right: 16px;
+        border-right: 1px solid var(--gray-800);
+    }
+}

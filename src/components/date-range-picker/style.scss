@@ -1,0 +1,133 @@
+@import 'src/styles/_typography.scss';
+
+.date-range-picker {
+    .ant-picker {
+        padding: 0;
+        padding-right: 8px;
+    }
+
+    .ant-picker-input {
+        padding: 6px 8px;
+        border-radius: 4px;
+        max-width: 86px;
+
+        input {
+            @include font-size(1rem);
+
+            &::placeholder {
+                @include font-size(1rem);
+            }
+        }
+    }
+
+    .ant-picker-disabled {
+        background-color: var(--gray-200);
+    }
+
+    .ant-picker-range-separator {
+        padding: 0 !important
+    }
+
+    .ant-picker-active-bar {
+        max-width: 64px;
+    }
+
+    &__preset {
+        position: absolute;
+        top: 0;
+        visibility: hidden;
+
+        .ant-picker-input {
+            display: none;
+        }
+        
+        .ant-picker-active-bar {
+            display: none;
+        }
+    }
+
+    &__popup {
+        .ant-picker-presets {
+            padding-left: 16px;
+            width: 160px;
+            height: 360px;
+
+            ul {
+                height: 100%;
+                margin: 0;
+                overflow: hidden !important;
+                border-inline-end: unset;
+
+                li {
+                    height: 30px;
+                    margin: 0 !important;
+                    margin-right: 8px !important;
+                    display: flex;
+                    align-items: center;
+                    color: var(--gray-900);
+                }
+            }
+        }
+
+        .ant-picker-panels {
+            border-left: 1px solid var(--gray-400);
+            color: var(--gray-900) !important;
+
+            button {
+                @include font-size(1rem);
+            }
+
+            .ant-picker-panel-has-range {
+                border: unset;
+            }
+        }
+
+        .ant-picker-content {
+            @include font-size(1rem);
+        }
+
+        .ant-picker-header-view {
+            color: var(--gray-900) !important;
+        }
+
+        .ant-picker-content {
+            th {
+                color: var(--gray-900) !important;
+            }
+        }
+        
+        .ant-picker-footer-extra {
+            border-left: 1px solid var(--gray-400);
+            padding: 16px;
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+
+    &__panel {
+        padding: 16px 24px;
+        display: flex;
+        flex-direction: column;
+
+        >div {
+            padding: 0 16px 0 8px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: var(--gray-900);
+            @include font-size(1rem);
+
+            &:hover {
+                background-color: var(--gray-200);
+                border-radius: 4px;
+            }
+        }
+
+        &--active {
+            background-color: var(--gray-200);
+            border-radius: 4px;
+        }
+    }
+}
+

@@ -1,0 +1,46 @@
+$spacing: 8;
+$position-values: (); 
+
+@for $i from 1 through 100 {
+    $position-values: append($position-values, $i);
+}
+
+.position {
+    &-static {
+        position: static;
+    }
+
+    &-fixed {
+        position: fixed;
+    }
+
+    &-absolute {
+        position: absolute;
+    }
+
+    &-relative {
+        position: relative;
+    }
+
+    &-sticky {
+        position: sticky;
+    }
+
+    @each $size in $position-values {
+        &-top-#{$size} {
+            top: #{$size*$spacing}px;
+        }
+
+        &-bottom-#{$size} {
+            bottom: #{$size*$spacing}px;
+        }
+
+        &-left-#{$size} {
+            left: #{$size*$spacing}px;
+        }
+        
+        &-right-#{$size} {
+            right: #{$size*$spacing}px;
+        }
+    }
+}

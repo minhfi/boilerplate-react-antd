@@ -1,4 +1,4 @@
-import { FC, useEffect, useLayoutEffect } from 'react'
+import { FC, Suspense, useEffect, useLayoutEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 import { Layout } from 'antd'
@@ -8,19 +8,31 @@ import {
   getLayoutIsHeader,
   getNavigateTo
 } from 'src/store/selectors'
-import { setLayoutAside, setLayoutHeader } from 'src/store/actions'
+import {
+  setLayoutAside,
+  setLayoutHeader
+} from 'src/store/actions'
 import { AUTH_GET_PROFILE } from 'src/store/types'
+// import { Footer } from './footer'
 import Header from './header'
 import Aside from './aside'
 import './style.scss'
+import { FlashScreen } from 'src/components/flash-screen'
 
 export const LayoutContainer: FC = (props) => {
   const history = useHistory()
   const dispatch = useDispatch()
   const navigateTo = useSelector(getNavigateTo)
-  const isHeader = useSelector(getLayoutIsHeader)
   const isAside = useSelector(getLayoutIsAside)
   const isAuthenticated = useSelector(getIsAuthenticated)
+  const isHeader = useSelector(getLayoutIsHeader)
+
+  // load profile
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch({ type: AUTH_GET_PROFILE })
+    }
+  }, [isAuthenticated])
 
   // navigate route in redux
   useEffect(() => {
@@ -28,13 +40,6 @@ export const LayoutContainer: FC = (props) => {
       history.push(navigateTo)
     }
   }, [navigateTo, history])
-
-  // load profile
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch({ type: AUTH_GET_PROFILE })
-    }
-  }, [])
 
   useLayoutEffect(() => {
     dispatch(setLayoutHeader(!!isAuthenticated))
@@ -47,9 +52,9 @@ export const LayoutContainer: FC = (props) => {
 
       <div className="layout-content">
         {isHeader && <Header/>}
-
         <Layout.Content className="layout-content__child">
-          {props.children}
+          <Suspense fallback={<FlashScreen/>}>{props.children}</Suspense>
+          {/* <Footer/> */}
         </Layout.Content>
       </div>
     </Layout>

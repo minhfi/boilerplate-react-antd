@@ -79,5 +79,5 @@ export const useValidation = <T>() => {
     [setErrorAtPath, removeErrorAtPath]
   )
 
-  return { errors, setErrors, validate, validateAt, removeError }
+  return { errors, setErrors, validate, validateAt, removeError, removeErrorAtPath }
 }

@@ -1,139 +1,84 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setLayoutLoading } from 'src/store/actions'
-import { useValidation } from 'src/hooks/useValidation'
-import { Button } from 'src/components/button'
-import { Input } from 'src/components/input'
-import { ENotify } from 'src/constants/enum'
-import { formDataSchema } from './schema'
-import { notify } from 'src/utils/notify.util'
+import { FC } from 'react'
 import { Divider } from 'antd'
-import { Colors } from 'src/constants/theme'
-import { AUTH_GET_PROFILE } from 'src/store/types'
-import { getIsAuthenticated } from 'src/store/selectors'
+import { ButtonUI } from './button'
+import { TypographyUI } from './typography'
+import { InputUI } from './input'
+import { DrawerUI } from './drawer'
+import { NotificationUI } from './notification'
+import { LoadingUI } from './loading'
+import { ModalUI } from './modal'
+import { ShowColumnUI } from './show-column'
+import { CheckboxUI } from './checkbox'
+import { SwitchUI } from './switch'
+import { SelectUI } from './select'
+import { SelectMultiUI } from './select-multi'
+import { InputSearchUI } from './input-search'
+import { TextAreaUI } from './textarea'
+import { SelectStatusUI } from './select-status'
+import { ImageUI } from './image'
+import { DatePickerUI } from './date-picker'
+import { SelectBlockUI } from './select-block'
+import { TableUI } from './table'
 
-interface IFormData {
-  name: string
-  phone: string
-}
-
-const DesignSystem: FC = () => {
-  const dispatch = useDispatch()
-  const isAuthenticated = useSelector(getIsAuthenticated)
-
-  const { errors, validate } = useValidation<IFormData>()
-
-  const [formData, setFormData] = useState<IFormData>({
-    name: '',
-    phone: ''
-  })
-
-  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value
-    }))
-  }
-
-  const handleNotify = () => {
-    notify({
-      type: ENotify.SUCCESS,
-      message: 'Test success'
-    })
-  }
-
-  const handleSubmit = async () => {
-    try {
-      const isValid = await validate({
-        schema: formDataSchema,
-        data: { ...formData }
-      })
-      if (!isValid) return null
-    } catch (error) {}
-  }
-
-  useEffect(() => {
-    dispatch(setLayoutLoading(false))
-  }, [])
-
-  // load profile
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch({ type: AUTH_GET_PROFILE })
-    }
-  }, [])
-
+export const DesignSystem: FC = () => {
   return (
     <div style={{ padding: '24px' }}>
-      <div style={{ marginTop: '24px' }}>
-        <div className="heading-5">Typography</div>
-        <div style={{ display: 'flex', alignItems: 'flex-end', marginTop: '16px', gap: '16px' }}>
-          <div className="heading-1">heading1</div>
-          <div className="heading-2">heading2</div>
-          <div className="heading-3">heading3</div>
-          <div className="heading-4">heading4</div>
-          <div className="heading-5">heading5</div>
-          <div className="heading-6">heading6</div>
-          <div className="subtitle-1">subtitle1</div>
-          <div className="subtitle-2">subtitle2</div>
-          <div className="body-1">body1</div>
-          <div className="body-2">body2</div>
-        </div>
-      </div>
-
+      <TypographyUI/>
       <Divider/>
 
-      <div style={{ margin: '24px 0' }}>
-        <div className="heading-5">Button</div>
-        <div style={{ display: 'flex', alignItems: 'flex-end', marginTop: '16px', gap: '16px' }}>
-          <Button onClick={handleNotify}>Button primary</Button>
-          <Button type="link">Button secondary</Button>
-          <Button disabled>Button disabled</Button>
-          <Button
-            style={{
-              width: '300px',
-              background: Colors.red,
-              color: Colors.white
-            }}
-          >
-            Button other
-          </Button>
-        </div>
-
-        <Button style={{ width: '100%', marginTop: '16px' }}>Button Full width</Button>
-      </div>
-
+      <ButtonUI/>
       <Divider/>
 
-      <div style={{ margin: '24px 0' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-          <div className="heading-5">Input</div>
-          <Button type="link" onClick={handleSubmit}>Test input field</Button>
-        </div>
-        <div style={{ marginTop: '16px', display: 'flex', gap: '24px' }}>
-          <Input
-            required
-            label="Name"
-            name="name"
-            placeholder="Write your name"
-            value={formData.name}
-            onChange={handleChangeInput}
-            error={errors.name}
-          />
+      <InputUI/>
+      <Divider/>
 
-          <Input
-            label="Phone"
-            name="phone"
-            placeholder="Write your phone"
-            value={formData.phone}
-            onChange={handleChangeInput}
-          />
-        </div>
-      </div>
+      <InputSearchUI/>
+      <Divider/>
+
+      <TextAreaUI/>
+      <Divider/>
+
+      <SelectUI/>
+      <Divider/>
+
+      <SelectMultiUI/>
+      <Divider/>
+
+      <SelectStatusUI/>
+      <Divider/>
+
+      <SelectBlockUI/>
+      <Divider/>
+
+      <DrawerUI/>
+      <Divider/>
+
+      <ModalUI/>
+      <Divider/>
+
+      <NotificationUI/>
+      <Divider/>
+
+      <LoadingUI/>
+      <Divider/>
+
+      <ShowColumnUI/>
+      <Divider/>
+
+      <CheckboxUI/>
+      <Divider/>
+
+      <SwitchUI/>
+      <Divider/>
+
+      <ImageUI/>
+      <Divider/>
+
+      <DatePickerUI/>
+      <Divider/>
+
+      <TableUI/>
+      <Divider/>
     </div>
   )
 }
-
-export default DesignSystem

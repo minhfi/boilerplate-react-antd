@@ -1,0 +1,33 @@
+.checkbox {
+    .ant-checkbox {
+        &+span {
+            color: var(--gray-900)
+        }
+    }
+
+    .ant-checkbox-inner {
+        width: 18px;
+        height: 18px;
+    }
+
+    .ant-checkbox-disabled {
+        opacity: .7;
+
+        .ant-checkbox-inner {
+            background: var(--white);
+        }
+    }
+
+    .ant-checkbox-checked.ant-checkbox-disabled {
+        opacity: .7;
+
+        .ant-checkbox-inner {
+            background: var(--primary);
+            border-color: var(--primary);
+
+            &::after {
+                border-color: var(--white);
+            }
+        }
+    }
+}

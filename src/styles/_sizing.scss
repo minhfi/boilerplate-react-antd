@@ -1,0 +1,56 @@
+$spacing: 8;
+$width-values: (); 
+$height-values: (); 
+
+@for $i from 1 through 100 {
+  $width-values: append($width-values, $i);
+  $height-values: append($width-values, $i);
+}
+
+.w {
+    &-full {
+        width: 100%;
+    }
+
+    &-screen {
+        width: 100vw;
+    }
+    
+    @each $width in $width-values {
+        &-#{$width} {
+            width: #{$width*$spacing}px;
+        }
+
+        &-min-#{$width} {
+            min-width: #{$width*$spacing}px;
+        }
+
+        &-max-#{$width} {
+            max-width: #{$width*$spacing}px;
+        }
+    }
+}
+
+.h {
+    &-full {
+        width: 100%;
+    }
+
+    &-screen {
+        width: 100vh;
+    }
+    
+    @each $height in $height-values {
+        &-#{$height} {
+            height: #{$height*$spacing}px;
+        }
+
+        &-min-#{$height} {
+            min-height: #{$height*$spacing}px;
+        }
+
+        &-max-#{$height} {
+            max-height: #{$height*$spacing}px;
+        }
+    }
+}

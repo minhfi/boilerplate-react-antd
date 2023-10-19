@@ -1,21 +1,29 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import { Button as ButtonBasic } from 'antd'
-import { NativeButtonProps } from 'antd/lib/button/button'
+import { omit } from 'lodash'
+import { BaseButtonProps } from 'antd/lib/button/button'
 import './style.scss'
 
-export interface IButtonProps extends NativeButtonProps {
-  type?: 'primary' | 'link'
+export interface IButtonProps extends BaseButtonProps {
+  colors?: string
+  icon?: ReactNode
+  endIcon?: ReactNode
+  type?: 'primary' | 'default' | 'text'
   onClick?: () => void
 }
 
 export const Button: FC<IButtonProps> = (props) => {
   return (
     <ButtonBasic
+      {...omit(props, 'endIcon')}
       type={props.type}
-      className="button body-2"
-      {...props}
+      className={`button body-2 ${props.className ? props.className : ''}`}
+      style={{ color: props.colors }}
     >
-      {props.children}
+      <div>
+        {props.children}
+        {props.endIcon ? <span className="ml-8">{props.endIcon}</span> : ''}
+      </div>
     </ButtonBasic>
   )
 }

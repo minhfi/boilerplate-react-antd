@@ -11,7 +11,15 @@ import { saga } from './saga'
 const persistConfig = {
   key: 'store',
   storage,
-  blacklist: ['layout', 'modal']
+  blacklist: [
+    'layout',
+    // 'layout.isAside',
+    // 'layout.pageTitle',
+    // 'layout.isLoading',
+    // 'layout.navigateTo',
+    // 'layout.drawer',
+    'modal'
+  ]
 }
 
 const initialStore = () => {
@@ -19,19 +27,12 @@ const initialStore = () => {
   const history = createBrowserHistory()
 
   const middleware = composeWithDevTools(
-    applyMiddleware(
-      sagaMiddleware,
-      routerMiddleware(history)
-    )
+    applyMiddleware(sagaMiddleware, routerMiddleware(history))
   )
 
   const persistedReducer = persistReducer(persistConfig, reducers)
 
-  const store = createStore(
-    persistedReducer,
-    {},
-    middleware
-  )
+  const store = createStore(persistedReducer, {}, middleware)
 
   const persistor = persistStore(store)
 

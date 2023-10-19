@@ -1,4 +1,4 @@
-import { ICredential } from 'src/interfaces'
+import { ICredential } from 'src/interfaces/models/auth.model'
 import { AUTH_LOGOUT_SUCCESS, AUTH_SET_CREDENTIALS, AUTH_SET_PROFILE, IAuthState, TAuthAction } from '../types'
 
 export const initState: IAuthState = {

@@ -1,0 +1,76 @@
+@import 'src/styles/_typography.scss';
+
+.select {
+    display: flex;
+    flex-direction: column;
+
+    &-option {
+        >div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            div {
+                display: block;
+                max-width: 100%;
+                white-space: nowrap;
+                overflow: hidden !important;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
+    .ant-select-open {
+        img {
+            opacity: .2;
+        }
+    }
+    
+    .ant-select-selection-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        div {
+            display: block;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .ant-select-selector {
+        min-height: 36px !important;
+    }
+
+    .ant-select-selection-item {
+        display: flex;
+        align-items: center;
+        color: var(--gray-900);
+        @include font-size(1rem);
+    }
+
+    .ant-select-selection-placeholder {
+        display: flex;
+        align-items: center;
+        @include font-size(1rem);
+    }
+
+    .ant-select-arrow {
+        color: var(--black);
+    }
+
+    .ant-select-status-error > div.ant-select-selector {
+        border-color: var(--red) !important
+    }
+
+    .ant-select-disabled {
+        background-color: var(--gray-200);
+        
+        .ant-select-selector {
+            background: unset !important;
+            color: unset !important;
+        }
+    }
+}

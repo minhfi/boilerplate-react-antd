@@ -1,48 +1,74 @@
 :root {
     --white: #fff;
     --black: #000;
+    --background: #f3f5f8;
+    --violet: #930cff;
 
-    --primary: #005993;
-    --blue-100: #CBE6FE;
-    --blue-200: #8FD7F6;
-    --blue-300: #4DA7D2;
-    --blue-400: #338DC0;
-    --blue-500: #1A73AB;
-    --blue-700: #004E83;
-    --blue-800: #004472;
-    --blue-900: #003961;
-    --blue-1000: #062A46;
+    --primary: #7063FF;
+    --blue-100: #F4F0FF;
+    --blue-200: #EBE8FF;
+    --blue-300: #CFCCFF;
+    --blue-400: #9E96FF;
+    --blue-500: #7063FF;
+    --blue-600: #402EFC;
+    --blue-700: #251cd6;
+    --blue-800: #110eb0;
+    --blue-900: #04068a;
+    --blue-1000: #020763;
 
-    --green: #4CB944;
-    --green-100: #A6F984;
+    // --primary: #1f73ad;
+    // --blue-100: #CBE6FE;
+    // --blue-200: #8FD7F6;
+    // --blue-300: #4DA7D2;
+    // --blue-400: #338DC0;
+    // --blue-500: #00bfe2;
+    // --primary: #2E9CE8;
+    // --blue-700: #004E83;
+    // --blue-800: #004472;
+    // --blue-900: #003961;
+    // --blue-1000: #062A46;
+
+    --green: #27ae60;
+    --green-50: rgb(39 174 96 / 18%);
+    --green-100: #e4f6eb;
     --green-200: #91F173;
+    --green-250: #0ee0ba;
     --green-300: #7EE764;
     --green-400: #6BDA57;
-    --green-500: #5ACB4C;
+    --green-500: #008436;
     --green-700: #41A43A;
     --green-800: #368E30;
     --green-900: #2C7826;
     --green-1000: #22611E;
 
-    --red: #EA114E;
-    --red-100: #FFE6E8;
+    --orange-100: #f3b75a1f;
+    --orange-300: #f3b75a;
+    --orange-500: #ffa346;
+
+    --red: #d93d46;
+    --red-100: #fddee1;
     --red-200: #FFB8C2;
     --red-300: #FF8A9F;
     --red-400: #FF5C7F;
     --red-500: #EE2E63;
+    --red-600: #f65a63;
     --red-700: #C31143;
     --red-800: #AF103D;
     --red-900: #9B0F36;
     --red-1000: #870E30;
 
-    --gray-100: #FFFFFF;
-    --gray-200: #F4F8FB;
-    --gray-300: #F2F6F9;
-    --gray-400: #EAF3FD;
-    --gray-500: #C9D9EA;
-    --gray-600: #9EB3C9;
-    --gray-700: #8294A2;
-    --gray-800: #697F90;
-    --gray-900: #4B6477;
+    --gray-50: #fafbfc;
+    --gray-100: #e6ebf0;
+    --gray-200: #f4f6f9;
+    --gray-250: #f7f9fb;
+    --gray-300: #eaecef;
+    --gray-350: #d7dce2;
+    --gray-400: #e5e8ec;
+    --gray-500: #bec3c94c;
+    --gray-550: #bec3c9;
+    --gray-600: #8b979e;
+    --gray-700: #6e7a83;
+    --gray-800: #68747d;
+    --gray-900: #2f3137;
     --gray-1000: #000000 
 }

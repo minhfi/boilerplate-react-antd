@@ -1,23 +1,32 @@
+@import 'src/styles/_typography.scss';
+
 .modal {
-    background: rgba(36 37 45 / 40%);
-    backdrop-filter: blur(16px);
+    .ant-modal-content {
+        padding: 0;
+        border-radius: 4px;
+        background-color: var(--gray-50);
+    }
 
-    &-icon {
-        &__close {
-            position: absolute;
-            right: -8px;
-            top: -8px;
-            z-index: 2;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            box-shadow: 0px 8px 16px rgb(37 38 46 / 10%);
-            border-radius: 32px;
-            background-color: var(--white);
+    .ant-modal-header {
+        height: 68px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        border-bottom: 1px solid var(--gray-400);
+        background-color: var(--white);
 
-            display: flex;
-            justify-content: center;
-            align-items: center
+        >div {
+            @include typo(1.4rem, 600);
+            color: var(--gray-900)
         }
+    }
+
+    .ant-modal-close-icon {
+        top: 20px;
+    }
+    
+    .ant-modal-footer {
+        display: none;
     }
 }

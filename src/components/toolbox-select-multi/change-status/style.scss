@@ -1,0 +1,45 @@
+.change-status {
+    position: relative;
+
+    &__label {
+        cursor: pointer;
+        color: var(--white);
+        font-weight: 500;
+    }
+
+    &__dropdown {
+        position: absolute;
+        z-index: 10;
+        right: 0;
+        top: 8px;
+        width: 240px;
+        background: var(--white);
+        box-shadow: 0 3px 6px #00000029;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+
+        &--content {
+            border-bottom:  1px solid var(--gray-200);
+            padding: 8px 0;
+            color: var(--gray-900);
+
+            >div {
+                cursor: pointer;
+                padding: 0 24px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                &:hover {
+                    background-color: var(--gray-200);
+                }
+            }
+
+            >div.active {
+                background-color: var(--gray-200);
+            }
+        }
+    }
+}

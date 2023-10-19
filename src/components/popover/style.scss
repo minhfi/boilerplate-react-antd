@@ -1,0 +1,14 @@
+.popover {
+    margin-right: 0 !important;
+
+    &-card {
+        .ant-popover-inner {
+            padding: 16px;
+            max-width: 340px;
+        }
+
+        .ant-popover-inner-content {
+            color: var(--gray-900)
+        }
+    }
+}

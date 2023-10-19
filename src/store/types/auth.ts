@@ -1,4 +1,4 @@
-import { ICredential, IUserModel } from 'src/interfaces/models'
+import { ICredential, IProfile } from 'src/interfaces/models/auth.model'
 
 /* authentication actions */
 export const AUTH_LOGIN = 'AUTH_LOGIN'
@@ -14,13 +14,17 @@ export const AUTH_SET_PROFILE = 'AUTH_SET_PROFILE'
 export interface IAuthState {
   isAuthenticated: boolean | null
   credentials: ICredential
-  profile: IUserModel | null
+  profile: IProfile | null
 }
 
 /**
  * actions
  */
 export type TAuthAction = {
-  type: typeof AUTH_SET_CREDENTIALS | typeof AUTH_LOGOUT_SUCCESS | typeof AUTH_GET_PROFILE | typeof AUTH_SET_PROFILE
-  value?: IUserModel | ICredential
+  type:
+    | typeof AUTH_SET_CREDENTIALS
+    | typeof AUTH_LOGOUT_SUCCESS
+    | typeof AUTH_GET_PROFILE
+    | typeof AUTH_SET_PROFILE
+  value?: IProfile | ICredential
 }

@@ -1,22 +1,32 @@
-import { AxiosResponse } from 'axios'
-
-export interface IPaginationQuery {
+export interface IQueryParams {
   page?: number
-  pageSize?: number
+  limit?: number
+  search?: string | number
+  sortField?: string
+  sortType?: string
   [key: string]: any
 }
 
-export interface IDataResponse<T> {
+export interface IResponseList<T = any> {
+  data: T
+  page: number
+  total: number
+  limit: number
+}
+
+export interface IAPIResponse<T = any> {
   code?: number
   message?: string
   data?: T
 }
 
-export interface IErrorResponse {
-  code: number
-  message: string
+export interface IAPIResponseList<T> {
+  code?: number
+  message?: string
+  data?: T
+  page?: number
+  total?: number
 }
 
-export type TAxiosResponseData<T = any> = Promise<AxiosResponse<T>>
-export type TAxiosResponsePagination<T = any> = Promise<AxiosResponse<IDataResponse<T>>>
-export type TAxiosResponseList<T = any> = Promise<AxiosResponse<T[]>>
+export type TAxiosResponse<T = any> = Promise<IAPIResponse<T>>
+export type TAxiosResponseList<T = any> = Promise<IAPIResponseList<T>>
